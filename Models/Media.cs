@@ -2,7 +2,7 @@ namespace EntertainmentDB.Models;
 
 public abstract class Media
 {
-    public Guid Id;
+    public Guid Id { get; set; }
 
     public string Name { get; set; } = "";
 
