@@ -10,8 +10,6 @@ public class Game : Media
 
     public virtual ICollection<Person>? Directors { get; set; }
 
-    public virtual Franchise? Franchise { get; set; }
-
     public virtual ICollection<Track>? Soundtrack { get; set; }
 
     public virtual ICollection<Platform>? Platforms { get; set; }

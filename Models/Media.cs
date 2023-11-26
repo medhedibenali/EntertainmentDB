@@ -11,4 +11,6 @@ public abstract class Media
     public virtual ICollection<Genre>? Genres { get; set; }
 
     public virtual ICollection<Tag>? Tags { get; set; }
+
+    public virtual Franchise? Franchise { get; set; }
 }
