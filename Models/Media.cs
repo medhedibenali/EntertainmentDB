@@ -8,7 +8,7 @@ public abstract class Media
 
     public DateOnly ReleaseDate { get; set; }
 
-    public ICollection<Genre>? Genres { get; set; }
+    public virtual ICollection<Genre>? Genres { get; set; }
 
-    public ICollection<Tag>? Tags { get; set; }
+    public virtual ICollection<Tag>? Tags { get; set; }
 }
