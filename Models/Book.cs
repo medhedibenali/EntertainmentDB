@@ -1,9 +1,9 @@
 namespace EntertainmentDB.Models;
 
-public class Track : Media
+public class Book : Media
 {
     public Guid Id { get; set; }
 
-    public string Duration { get; set; } 
+    public string Isbn { get; set; } 
 
 }
