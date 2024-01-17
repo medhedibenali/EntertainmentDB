@@ -1,6 +1,9 @@
 namespace EntertainmentDB.Models;
 
-public class Track
+public class Track : Media
 {
+    public string Duration { get; set; } = "";
+    public virtual ICollection<Person>? Artists { get; set; }
+    public virtual ICollection<Media>? AppearancesInMedia { get; set; }
 
 }
