@@ -25,8 +25,6 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 
     public DbSet<Platform> Platforms { get; set; }
 
-    public DbSet<Production> Productions { get; set; }
-
     public DbSet<Season> Seasons { get; set; }
 
     public DbSet<Show> Shows { get; set; }
