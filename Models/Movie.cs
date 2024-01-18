@@ -6,7 +6,7 @@ public class Movie : Media
 
     public string Synopsis { get; set; } = "";
 
-    public virtual ICollection<Person> Stars { get; set; }
+    public virtual ICollection<Person>? Stars { get; set; }
 
     public virtual ICollection<Person>? Writers { get; set; }
 
