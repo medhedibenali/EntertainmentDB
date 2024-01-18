@@ -1,3 +1,4 @@
+using EntertainmentDB.DAL;
 using EntertainmentDB.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(
     options => options.UseNpgsql(connectionString)
 );
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 var app = builder.Build();
 
