@@ -1,6 +1,6 @@
 ﻿namespace EntertainmentDB.Models;
 
-public class User
+public class ApplicationUser
 {
     public Guid Id { get; set; }
 
