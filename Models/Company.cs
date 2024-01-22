@@ -8,5 +8,7 @@ public class Company
 
     public string Origin { get; set; } = "";
 
+    public virtual ICollection<Book>? BooksPublished { get; set; }
+
     public virtual ICollection<Movie>? MoviesProduced { get; set; }
 }
