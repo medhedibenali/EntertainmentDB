@@ -8,5 +8,5 @@ public class Company
 
     public string Origin { get; set; } = "";
 
-    public virtual ICollection<Media>? Media { get; set; }
+    public virtual ICollection<Movie>? MoviesProduced { get; set; }
 }

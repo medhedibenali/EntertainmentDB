@@ -6,5 +6,7 @@ public class Track : Media
 
     public virtual ICollection<Person>? Artists { get; set; }
 
+    public virtual ICollection<Movie>? Movies { get; set; }
+
     public virtual ICollection<Show>? Shows { get; set; }
 }

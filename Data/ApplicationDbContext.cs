@@ -47,6 +47,20 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             }
         );
 
+        modelBuilder.Entity<Movie>(
+            m =>
+            {
+                m.HasMany<Person>(m => m.Stars)
+                    .WithMany(p => p.Movies);
+
+                m.HasMany<Person>(m => m.Writers)
+                    .WithMany(p => p.MoviesWritten);
+
+                m.HasMany<Person>(m => m.Directors)
+                    .WithMany(p => p.MoviesDirected);
+            }
+        );
+
         modelBuilder.Entity<Show>(
             s =>
             {
