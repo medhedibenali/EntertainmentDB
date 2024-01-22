@@ -12,7 +12,9 @@ public class Person
 
     public string Origin { get; set; } = "";
 
-    public virtual ICollection<Media>? Products { get; set; }
-
     public virtual ICollection<Franchise>? Franchises { get; set; }
+
+    public virtual ICollection<Show>? Shows { get; set; }
+
+    public virtual ICollection<Show>? ShowsCreated { get; set; }
 }
