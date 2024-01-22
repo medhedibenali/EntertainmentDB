@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace EntertainmentDB.Models;
+﻿namespace EntertainmentDB.Models;
 
 public class Episode
 {
@@ -10,8 +8,9 @@ public class Episode
 
     public string Synopsis { get; set; } = "";
 
-    [Required]
     public int Duration { get; set; }
+
+    public int EpisodeNumber { get; set; }
 
     public virtual Season? Season { get; set; }
 }

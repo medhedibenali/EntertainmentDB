@@ -46,5 +46,20 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
                 .WithMany();
             }
         );
+
+        modelBuilder.Entity<Episode>(
+            e =>
+            {
+                e.HasOne<Season>(e => e.Season)
+                    .WithMany(s => s.Episodes)
+                    .IsRequired();
+
+                e.Property(e => e.Duration)
+                    .IsRequired();
+
+                e.Property(e => e.EpisodeNumber)
+                    .IsRequired();
+            }
+        );
     }
 }
