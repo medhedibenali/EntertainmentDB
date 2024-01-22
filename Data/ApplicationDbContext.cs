@@ -34,4 +34,17 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<Track> Tracks { get; set; }
 
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<ApplicationUser>(
+            u =>
+            {
+                u.HasMany<Media>(u => u.Favourites)
+                .WithMany();
+            }
+        );
+    }
 }
