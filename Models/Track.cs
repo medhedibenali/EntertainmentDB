@@ -9,4 +9,6 @@ public class Track : Media
     public virtual ICollection<Movie>? Movies { get; set; }
 
     public virtual ICollection<Show>? Shows { get; set; }
+
+    public virtual ICollection<Game>? Games { get; set; }
 }

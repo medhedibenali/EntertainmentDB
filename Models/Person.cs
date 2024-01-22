@@ -22,6 +22,8 @@ public class Person
 
     public virtual ICollection<Show>? ShowsCreated { get; set; }
 
+    public virtual ICollection<Game>? GamesDirected { get; set; }
+
     public virtual ICollection<Book>? Books { get; set; }
 
     public virtual ICollection<Track>? Tracks { get; set; }
