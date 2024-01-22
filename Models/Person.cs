@@ -12,8 +12,6 @@ public class Person
 
     public string Origin { get; set; } = "";
 
-    public virtual ICollection<Franchise>? Franchises { get; set; }
-
     public virtual ICollection<Movie>? Movies { get; set; }
 
     public virtual ICollection<Movie>? MoviesDirected { get; set; }
@@ -27,4 +25,6 @@ public class Person
     public virtual ICollection<Book>? Books { get; set; }
 
     public virtual ICollection<Track>? Tracks { get; set; }
+
+    public virtual ICollection<Franchise>? FranchisesCreated { get; set; }
 }
