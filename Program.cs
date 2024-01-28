@@ -1,5 +1,6 @@
 using EntertainmentDB.DAL;
 using EntertainmentDB.Data;
+using EntertainmentDB.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+
+builder.Services.AddScoped(typeof(ICrudService<>), typeof(CrudService<>));
 
 var app = builder.Build();
 
