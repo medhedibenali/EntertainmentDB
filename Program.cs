@@ -32,6 +32,8 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options => option
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
 
+builder.Services.AddScoped(typeof(IAuthService), typeof(AuthService));
+
 builder.Services.AddScoped(typeof(ICrudService<>), typeof(CrudService<>));
 
 // configure strongly typed settings objects
