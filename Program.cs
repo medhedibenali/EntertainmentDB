@@ -36,6 +36,8 @@ builder.Services.AddScoped(typeof(IAuthService), typeof(AuthService));
 
 builder.Services.AddScoped(typeof(ICrudService<>), typeof(CrudService<>));
 
+builder.Services.AddScoped(typeof(IRoleService), typeof(RoleService));
+
 // configure strongly typed settings objects
 var jwtSection = builder.Configuration.GetSection("JWTBearerTokenSettings");
 
