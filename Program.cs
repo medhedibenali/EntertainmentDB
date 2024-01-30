@@ -4,6 +4,9 @@ using EntertainmentDB.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using EntertainmentDB.Models;
+using EntertainmentDB.JWTBearerConfig;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +34,41 @@ builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
 
 builder.Services.AddScoped(typeof(ICrudService<>), typeof(CrudService<>));
 
+// configure strongly typed settings objects
+var jwtSection = builder.Configuration.GetSection("JWTBearerTokenSettings");
+
+builder.Services.Configure<JWTBearerTokenSettings>(jwtSection);
+
+var jwtBearerTokenSettings = jwtSection.Get<JWTBearerTokenSettings>() ?? new();
+var key = System.Text.Encoding.ASCII.GetBytes(jwtBearerTokenSettings.SecretKey);
+
+builder.Services.AddAuthentication(
+        options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        }
+    )
+    .AddJwtBearer(
+        options =>
+        {
+            options.RequireHttpsMetadata = false;
+            options.SaveToken = true;
+            options.Authority = jwtBearerTokenSettings.Authority;
+            options.TokenValidationParameters = new()
+            {
+                ValidateIssuer = true,
+                ValidIssuer = jwtBearerTokenSettings.Issuer,
+                ValidateAudience = true,
+                ValidAudience = jwtBearerTokenSettings.Audience,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero
+            };
+        }
+    );
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -41,6 +79,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
