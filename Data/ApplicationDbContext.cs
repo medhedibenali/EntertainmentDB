@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using EntertainmentDB.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace EntertainmentDB.Data;
 
-public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser, ApplicationRole, string>(options)
 {
     public DbSet<Book> Books { get; set; }
 

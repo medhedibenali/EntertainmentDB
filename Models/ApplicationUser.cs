@@ -1,12 +1,8 @@
-﻿namespace EntertainmentDB.Models;
+﻿using Microsoft.AspNetCore.Identity;
 
-public class ApplicationUser
+namespace EntertainmentDB.Models;
+
+public class ApplicationUser : IdentityUser
 {
-    public Guid Id { get; set; }
-
-    public string Login { get; set; } = "";
-
-    public string Password { get; set; } = "";
-
     public virtual ICollection<Media>? Favourites { get; set; }
 }
