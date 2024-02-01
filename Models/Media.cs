@@ -1,6 +1,6 @@
 namespace EntertainmentDB.Models;
 
-public abstract class Media
+public abstract class Media : IEntity<Guid>
 {
     public Guid Id { get; set; }
 

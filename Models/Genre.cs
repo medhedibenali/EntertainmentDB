@@ -1,6 +1,6 @@
 namespace EntertainmentDB.Models;
 
-public class Genre
+public class Genre : IEntity<Guid>
 {
     public Guid Id { get; set; }
 

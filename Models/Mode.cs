@@ -1,6 +1,6 @@
 namespace EntertainmentDB.Models;
 
-public class Mode
+public class Mode : IEntity<Guid>
 {
     public Guid Id { get; set; }
 

@@ -1,6 +1,6 @@
 ﻿namespace EntertainmentDB.Models;
 
-public class Season
+public class Season : IEntity<Guid>
 {
     public Guid Id { get; set; }
 

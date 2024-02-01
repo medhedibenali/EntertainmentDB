@@ -1,6 +1,6 @@
 namespace EntertainmentDB.Models;
 
-public class Platform
+public class Platform : IEntity<Guid>
 {
     public Guid Id { get; set; }
 
