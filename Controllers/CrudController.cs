@@ -1,5 +1,6 @@
 using EntertainmentDB.Models;
 using EntertainmentDB.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,6 +30,7 @@ public abstract class CrudController<TEntity>(ICrudService<TEntity> entityServic
     }
 
     [HttpPut("{id}")]
+    [Authorize(Roles = "Admin")]
     public virtual IActionResult Put(Guid id, TEntity entity)
     {
         if (id != entity.Id)
@@ -56,6 +58,7 @@ public abstract class CrudController<TEntity>(ICrudService<TEntity> entityServic
     }
 
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public virtual ActionResult<TEntity> Post(TEntity entity)
     {
         entityService.Insert(entity);
@@ -64,6 +67,7 @@ public abstract class CrudController<TEntity>(ICrudService<TEntity> entityServic
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
     public virtual IActionResult Delete(Guid id)
     {
         var entity = entityService.GetById(id);
