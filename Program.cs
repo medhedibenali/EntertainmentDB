@@ -7,6 +7,7 @@ using EntertainmentDB.Models;
 using EntertainmentDB.JWTBearerConfig;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using EntertainmentDB.Services.Crud;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,15 +30,18 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options => option
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
-builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+builder.Services
+    .AddScoped(typeof(IRepository<>), typeof(Repository<>))
+    .AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
 
 builder.Services.AddScoped(typeof(IAuthService), typeof(AuthService));
 
-builder.Services.AddScoped(typeof(ICrudService<>), typeof(CrudService<>));
-
 builder.Services.AddScoped(typeof(IUserService), typeof(UserService));
 builder.Services.AddScoped(typeof(IRoleService), typeof(RoleService));
+
+builder.Services
+    .AddScoped(typeof(ICrudService<>), typeof(CrudService<>))
+    .AddScoped(typeof(ICrudService<Game>), typeof(GameCrudService))
 
 // configure strongly typed settings objects
 var jwtSection = builder.Configuration.GetSection("JWTBearerTokenSettings");

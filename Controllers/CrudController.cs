@@ -1,5 +1,5 @@
 using EntertainmentDB.Models;
-using EntertainmentDB.Services;
+using EntertainmentDB.Services.Crud;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

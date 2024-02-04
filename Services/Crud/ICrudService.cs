@@ -1,4 +1,4 @@
-namespace EntertainmentDB.Services;
+namespace EntertainmentDB.Services.Crud;
 
 public interface ICrudService<TEntity> where TEntity : class
 {
