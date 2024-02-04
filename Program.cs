@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using EntertainmentDB.Services.Mapping;
 using EntertainmentDB.RequestModels;
+using System.Text.Json.Serialization;
 using EntertainmentDB.Services.Crud;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +19,12 @@ builder.Configuration.AddJsonFile("appsettings.local.json", optional: true, relo
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services
+    .AddControllers()
+    .AddJsonOptions(
+        options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles
+    );
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
