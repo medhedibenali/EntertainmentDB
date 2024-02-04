@@ -8,6 +8,7 @@ using EntertainmentDB.JWTBearerConfig;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using EntertainmentDB.Services.Mapping;
+using EntertainmentDB.RequestModels;
 using EntertainmentDB.Services.Crud;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,7 +45,9 @@ builder.Services
     .AddScoped(typeof(ICrudService<>), typeof(CrudService<>))
     .AddScoped(typeof(ICrudService<Game>), typeof(GameCrudService))
 
-builder.Services.AddScoped(typeof(IMappingService<,>), typeof(MappingService<,>))
+builder.Services
+    .AddScoped(typeof(IMappingService<,>), typeof(MappingService<,>))
+    .AddScoped(typeof(IMappingService<Game, GameInput>), typeof(GameMappingService));
 
 // configure strongly typed settings objects
 var jwtSection = builder.Configuration.GetSection("JWTBearerTokenSettings");
