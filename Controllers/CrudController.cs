@@ -38,6 +38,8 @@ public abstract class CrudController<TEntity, TEntityInput>(ICrudService<TEntity
         try
         {
             TEntity entity = mappingService.Map(entityInput);
+            entity.Id = id;
+
             entityService.Update(entity);
         }
         catch (DbUpdateConcurrencyException)
