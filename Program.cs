@@ -49,7 +49,7 @@ builder.Services.AddScoped(typeof(IRoleService), typeof(RoleService));
 
 builder.Services
     .AddScoped(typeof(ICrudService<>), typeof(CrudService<>))
-    .AddScoped(typeof(ICrudService<Game>), typeof(GameCrudService))
+    .AddScoped(typeof(ICrudService<Game>), typeof(GameCrudService));
 
 builder.Services
     .AddScoped(typeof(IMappingService<,>), typeof(MappingService<,>))
