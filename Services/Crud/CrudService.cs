@@ -1,6 +1,6 @@
 using EntertainmentDB.DAL;
 
-namespace EntertainmentDB.Services;
+namespace EntertainmentDB.Services.Crud;
 
 public class CrudService<TEntity>(IUnitOfWork unitOfWork) : ICrudService<TEntity> where TEntity : class
 {

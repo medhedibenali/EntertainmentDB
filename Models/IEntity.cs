@@ -1,6 +1,6 @@
 namespace EntertainmentDB.Models;
 
-public interface IEntity<out TKey>
+public interface IEntity<TKey>
 {
-    TKey Id { get; }
+    TKey Id { get; set; }
 }

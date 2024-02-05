@@ -7,6 +7,10 @@ using EntertainmentDB.Models;
 using EntertainmentDB.JWTBearerConfig;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using EntertainmentDB.Services.Mapping;
+using EntertainmentDB.RequestModels;
+using System.Text.Json.Serialization;
+using EntertainmentDB.Services.Crud;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +19,12 @@ builder.Configuration.AddJsonFile("appsettings.local.json", optional: true, relo
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services
+    .AddControllers()
+    .AddJsonOptions(
+        options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles
+    );
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -29,15 +38,22 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options => option
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
-builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+builder.Services
+    .AddScoped(typeof(IRepository<>), typeof(Repository<>))
+    .AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
 
 builder.Services.AddScoped(typeof(IAuthService), typeof(AuthService));
 
-builder.Services.AddScoped(typeof(ICrudService<>), typeof(CrudService<>));
-
 builder.Services.AddScoped(typeof(IUserService), typeof(UserService));
 builder.Services.AddScoped(typeof(IRoleService), typeof(RoleService));
+
+builder.Services
+    .AddScoped(typeof(ICrudService<>), typeof(CrudService<>))
+    .AddScoped(typeof(ICrudService<Game>), typeof(GameCrudService));
+
+builder.Services
+    .AddScoped(typeof(IMappingService<,>), typeof(MappingService<,>))
+    .AddScoped(typeof(IMappingService<Game, GameInput>), typeof(GameMappingService));
 
 // configure strongly typed settings objects
 var jwtSection = builder.Configuration.GetSection("JWTBearerTokenSettings");

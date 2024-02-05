@@ -1,14 +1,18 @@
 using EntertainmentDB.Models;
-using EntertainmentDB.Services;
+using EntertainmentDB.Services.Crud;
+using EntertainmentDB.Services.Mapping;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace EntertainmentDB.Controllers;
 
-public abstract class CrudController<TEntity>(ICrudService<TEntity> entityService) : ControllerBase where TEntity : class, IEntity<Guid>
+public abstract class CrudController<TEntity, TEntityInput>(ICrudService<TEntity> entityService, IMappingService<TEntity, TEntityInput> mappingService) : ControllerBase
+    where TEntity : class, IEntity<Guid>
+    where TEntityInput : class
 {
     protected readonly ICrudService<TEntity> entityService = entityService;
+    protected readonly IMappingService<TEntity, TEntityInput> mappingService = mappingService;
 
     [HttpGet]
     public virtual ActionResult<IEnumerable<TEntity>> Get()
@@ -31,15 +35,13 @@ public abstract class CrudController<TEntity>(ICrudService<TEntity> entityServic
 
     [HttpPut("{id}")]
     [Authorize(Roles = "Admin")]
-    public virtual IActionResult Put(Guid id, TEntity entity)
+    public virtual IActionResult Put(Guid id, TEntityInput entityInput)
     {
-        if (id != entity.Id)
-        {
-            return BadRequest();
-        }
-
         try
         {
+            TEntity entity = mappingService.Map(entityInput);
+            entity.Id = id;
+
             entityService.Update(entity);
         }
         catch (DbUpdateConcurrencyException)
@@ -59,8 +61,9 @@ public abstract class CrudController<TEntity>(ICrudService<TEntity> entityServic
 
     [HttpPost]
     [Authorize(Roles = "Admin")]
-    public virtual ActionResult<TEntity> Post(TEntity entity)
+    public virtual ActionResult<TEntity> Post(TEntityInput entityInput)
     {
+        TEntity entity = mappingService.Map(entityInput);
         entityService.Insert(entity);
 
         return CreatedAtAction("Get", new { id = entity.Id }, entity);
