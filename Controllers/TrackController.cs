@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EntertainmentDB.Controllers;
 
+
 [ApiController]
 [Authorize]
 [Route("[controller]")]
-public class TagController(ICrudService<Tag> tagService, IMappingService<Tag, TagInput> mappingService) 
-                            : CrudController<Tag, TagInput>(tagService, mappingService)
+public class TrackController(ICrudService<Track> trackService, IMappingService<Track, TrackInput> mappingService)
+    : CrudController<Track, TrackInput>(trackService, mappingService)
 {
+
 }
