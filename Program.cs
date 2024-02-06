@@ -50,12 +50,14 @@ builder.Services.AddScoped(typeof(IRoleService), typeof(RoleService));
 builder.Services
     .AddScoped(typeof(ICrudService<>), typeof(CrudService<>))
     .AddScoped(typeof(ICrudService<Game>), typeof(GameCrudService))
-    .AddScoped(typeof(ICrudService<Tag>), typeof(TagCrudService));
+    .AddScoped(typeof(ICrudService<Tag>), typeof(TagCrudService))
+    .AddScoped(typeof(ICrudService<Person>), typeof(PersonCrudService));
 
 builder.Services
     .AddScoped(typeof(IMappingService<,>), typeof(MappingService<,>))
     .AddScoped(typeof(IMappingService<Game, GameInput>), typeof(GameMappingService))
-    .AddScoped(typeof(IMappingService<Tag, TagInput>), typeof(TagMappingService));
+    .AddScoped(typeof(IMappingService<Tag, TagInput>), typeof(TagMappingService))
+    .AddScoped(typeof(IMappingService<Person, PersonInput>), typeof(PersonMappingService<,>));
 
 // configure strongly typed settings objects
 var jwtSection = builder.Configuration.GetSection("JWTBearerTokenSettings");
