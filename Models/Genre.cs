@@ -6,5 +6,5 @@ public class Genre : IEntity<Guid>
 
     public string Name { get; set; } = "";
 
-    public virtual ICollection<Media>? Media { get; set; }
+    public virtual ICollection<Media>? Medias { get; set; }
 }

@@ -51,11 +51,13 @@ builder.Services
     .AddScoped(typeof(ICrudService<>), typeof(CrudService<>))
     .AddScoped(typeof(ICrudService<Game>), typeof(GameCrudService))
     .AddScoped(typeof(ICrudService<Tag>), typeof(TagCrudService));
+    .AddScoped(typeof(ICrudService<Genre>), typeof(GenreCrudService));
 
 builder.Services
     .AddScoped(typeof(IMappingService<,>), typeof(MappingService<,>))
     .AddScoped(typeof(IMappingService<Game, GameInput>), typeof(GameMappingService))
     .AddScoped(typeof(IMappingService<Tag, TagInput>), typeof(TagMappingService));
+    .AddScoped(typeof(IMappingService<Genre, GenreInput>), typeof(GenreMappingService<,>));  
 
 // configure strongly typed settings objects
 var jwtSection = builder.Configuration.GetSection("JWTBearerTokenSettings");
