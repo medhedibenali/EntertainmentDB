@@ -49,7 +49,10 @@ builder.Services.AddScoped(typeof(IRoleService), typeof(RoleService));
 
 builder.Services
     .AddScoped(typeof(ICrudService<>), typeof(CrudService<>))
+    .AddScoped(typeof(ICrudService<Book>), typeof(BookCrudService))
     .AddScoped(typeof(ICrudService<Game>), typeof(GameCrudService))
+    .AddScoped(typeof(ICrudService<Movie>), typeof(MovieCrudService))
+    .AddScoped(typeof(ICrudService<Track>), typeof(TrackCrudService))
     .AddScoped(typeof(ICrudService<Show>), typeof(ShowCrudService))
     .AddScoped(typeof(ICrudService<Season>), typeof(SeasonCrudService))
     .AddScoped(typeof(ICrudService<Episode>), typeof(EpisodeCrudService))
@@ -57,7 +60,10 @@ builder.Services
 
 builder.Services
     .AddScoped(typeof(IMappingService<,>), typeof(MappingService<,>))
+    .AddScoped(typeof(IMappingService<Book, BookInput>), typeof(BookMappingService))
     .AddScoped(typeof(IMappingService<Game, GameInput>), typeof(GameMappingService))
+    .AddScoped(typeof(IMappingService<Movie, MovieInput>), typeof(MovieMappingService))
+    .AddScoped(typeof(IMappingService<Track, TrackInput>), typeof(TrackMappingService))
     .AddScoped(typeof(IMappingService<Show, ShowInput>), typeof(ShowMappingService))
     .AddScoped(typeof(IMappingService<Season, SeasonInput>), typeof(SeasonMappingService))
     .AddScoped(typeof(IMappingService<Episode, EpisodeInput>), typeof(EpisodeMappingService))
