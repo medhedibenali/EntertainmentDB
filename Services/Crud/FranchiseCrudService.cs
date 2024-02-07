@@ -9,7 +9,7 @@ public class FranchiseCrudService(IUnitOfWork unitOfWork) : CrudService<Franchis
     {
         return unitOfWork.Repository<Franchise>()
             .Get(
-                filter: g => g.Id.Equals(id),
+                filter: f => f.Id.Equals(id),
                 includeProperties: [
                     nameof(Franchise.Creators),
                     nameof(Franchise.Media),
