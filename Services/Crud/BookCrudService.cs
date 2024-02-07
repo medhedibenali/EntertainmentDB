@@ -9,7 +9,7 @@ public class BookCrudService(IUnitOfWork unitOfWork) : CrudService<Book>(unitOfW
     {
         return unitOfWork.Repository<Book>()
             .Get(
-                filter: b => b.Id.Equals(id), 
+                filter: b => b.Id.Equals(id),
                 includeProperties: [
                     nameof(Book.Genres),
                     nameof(Book.Tags),

@@ -9,7 +9,7 @@ public class MovieCrudService(IUnitOfWork unitOfWork) : CrudService<Movie>(unitO
     {
         return unitOfWork.Repository<Movie>()
             .Get(
-                filter: m => m.Id.Equals(id), 
+                filter: m => m.Id.Equals(id),
                 includeProperties: [
                     nameof(Movie.Genres),
                     nameof(Movie.Tags),
@@ -23,5 +23,5 @@ public class MovieCrudService(IUnitOfWork unitOfWork) : CrudService<Movie>(unitO
             )
             .FirstOrDefault();
     }
-   
+
 }
