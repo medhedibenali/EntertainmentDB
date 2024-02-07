@@ -56,7 +56,8 @@ builder.Services
     .AddScoped(typeof(ICrudService<Show>), typeof(ShowCrudService))
     .AddScoped(typeof(ICrudService<Season>), typeof(SeasonCrudService))
     .AddScoped(typeof(ICrudService<Episode>), typeof(EpisodeCrudService))
-    .AddScoped(typeof(ICrudService<Tag>), typeof(TagCrudService));
+    .AddScoped(typeof(ICrudService<Tag>), typeof(TagCrudService))
+    .AddScoped(typeof(ICrudService<Person>), typeof(PersonCrudService));
 
 builder.Services
     .AddScoped(typeof(IMappingService<,>), typeof(MappingService<,>))
