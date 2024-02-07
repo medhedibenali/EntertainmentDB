@@ -7,12 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EntertainmentDB.Controllers;
 
-
 [ApiController]
 [Authorize]
 [Route("[controller]")]
 public class BookController(ICrudService<Book> bookService, IMappingService<Book, BookInput> mappingService)
     : CrudController<Book, BookInput>(bookService, mappingService)
 {
-
 }

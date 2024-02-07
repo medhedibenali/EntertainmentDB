@@ -42,31 +42,26 @@ builder.Services
     .AddScoped(typeof(IRepository<>), typeof(Repository<>))
     .AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
 
-builder.Services
-    .AddScoped(typeof(IAuthService), typeof(AuthService));
+builder.Services.AddScoped(typeof(IAuthService), typeof(AuthService));
 
-builder.Services
-    .AddScoped(typeof(IUserService), typeof(UserService));
-
-builder.Services
-    .AddScoped(typeof(IRoleService), typeof(RoleService));
+builder.Services.AddScoped(typeof(IUserService), typeof(UserService));
+builder.Services.AddScoped(typeof(IRoleService), typeof(RoleService));
 
 builder.Services
     .AddScoped(typeof(ICrudService<>), typeof(CrudService<>))
+    .AddScoped(typeof(ICrudService<Book>), typeof(BookCrudService))
     .AddScoped(typeof(ICrudService<Game>), typeof(GameCrudService))
+    .AddScoped(typeof(ICrudService<Movie>), typeof(MovieCrudService))
+    .AddScoped(typeof(ICrudService<Track>), typeof(TrackCrudService))
     .AddScoped(typeof(ICrudService<Tag>), typeof(TagCrudService));
-    .AddScoped(typeof(ICrudService<Track>), typeof(TrackCrudService));
-    .AddScoped(typeof(ICrudService<Book>), typeof(BookCrudService));
-    .AddScoped(typeof(ICrudService<TMovie>), typeof(MovieCrudService));
 
 builder.Services
     .AddScoped(typeof(IMappingService<,>), typeof(MappingService<,>))
+    .AddScoped(typeof(IMappingService<Book, BookInput>), typeof(BookMappingService))
     .AddScoped(typeof(IMappingService<Game, GameInput>), typeof(GameMappingService))
+    .AddScoped(typeof(IMappingService<Movie, MovieInput>), typeof(MovieMappingService))
+    .AddScoped(typeof(IMappingService<Track, TrackInput>), typeof(TrackMappingService))
     .AddScoped(typeof(IMappingService<Tag, TagInput>), typeof(TagMappingService));
-    .AddScoped(typeof(IMappingService<Movie, TagInput>), typeof(MovieMappingService));
-    .AddScoped(typeof(IMappingService<Track, TagInput>), typeof(TrackMappingService));
-    .AddScoped(typeof(IMappingService<Book, TagInput>), typeof(BookMappingService));
-
 
 // configure strongly typed settings objects
 var jwtSection = builder.Configuration.GetSection("JWTBearerTokenSettings");

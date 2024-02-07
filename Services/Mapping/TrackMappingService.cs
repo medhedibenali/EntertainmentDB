@@ -1,15 +1,23 @@
+using EntertainmentDB.DAL;
 using EntertainmentDB.Models;
 using EntertainmentDB.RequestModels;
 
 namespace EntertainmentDB.Services.Mapping;
 
-public class TrackMappingService : IMappingService<Track, TrackInput>
+public class TrackMappingService(IUnitOfWork unitOfWork) : MediaMappingService<Track, TrackInput>(unitOfWork)
 {
-    public Track Map(TrackInput trackInput)
+    public override Track Map(TrackInput trackInput)
     {
-        return new Track()
+        var track = new Track()
         {
-            Duration = trackInput.Duration ;
+            Duration = trackInput.Duration,
+            Artists = trackInput.Artists == null ? null
+                : (IList<Person>)unitOfWork.Repository<Person>()
+                    .Get(filter: p => trackInput.Artists.Contains(p.Id)),
         };
+
+        track = MapMedia(trackInput, track);
+
+        return track;
     }
 }
