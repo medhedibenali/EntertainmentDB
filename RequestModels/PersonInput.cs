@@ -2,7 +2,7 @@
 
 namespace EntertainmentDB.RequestModels
 {
-    public  class PersonInput
+    public class PersonInput
     {
         public string FirstName { get; set; } = "";
 
