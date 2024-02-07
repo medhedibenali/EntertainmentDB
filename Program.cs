@@ -56,8 +56,7 @@ builder.Services
 builder.Services
     .AddScoped(typeof(IMappingService<,>), typeof(MappingService<,>))
     .AddScoped(typeof(IMappingService<Game, GameInput>), typeof(GameMappingService))
-    .AddScoped(typeof(IMappingService<Tag, TagInput>), typeof(TagMappingService))
-    .AddScoped(typeof(IMappingService<Person, PersonInput>), typeof(PersonMappingService<,>));
+    .AddScoped(typeof(IMappingService<Tag, TagInput>), typeof(TagMappingService));
 
 // configure strongly typed settings objects
 var jwtSection = builder.Configuration.GetSection("JWTBearerTokenSettings");
