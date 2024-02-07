@@ -53,6 +53,9 @@ builder.Services
     .AddScoped(typeof(ICrudService<Game>), typeof(GameCrudService))
     .AddScoped(typeof(ICrudService<Movie>), typeof(MovieCrudService))
     .AddScoped(typeof(ICrudService<Track>), typeof(TrackCrudService))
+    .AddScoped(typeof(ICrudService<Show>), typeof(ShowCrudService))
+    .AddScoped(typeof(ICrudService<Season>), typeof(SeasonCrudService))
+    .AddScoped(typeof(ICrudService<Episode>), typeof(EpisodeCrudService))
     .AddScoped(typeof(ICrudService<Tag>), typeof(TagCrudService));
 
 builder.Services
@@ -61,6 +64,9 @@ builder.Services
     .AddScoped(typeof(IMappingService<Game, GameInput>), typeof(GameMappingService))
     .AddScoped(typeof(IMappingService<Movie, MovieInput>), typeof(MovieMappingService))
     .AddScoped(typeof(IMappingService<Track, TrackInput>), typeof(TrackMappingService))
+    .AddScoped(typeof(IMappingService<Show, ShowInput>), typeof(ShowMappingService))
+    .AddScoped(typeof(IMappingService<Season, SeasonInput>), typeof(SeasonMappingService))
+    .AddScoped(typeof(IMappingService<Episode, EpisodeInput>), typeof(EpisodeMappingService))
     .AddScoped(typeof(IMappingService<Tag, TagInput>), typeof(TagMappingService));
 
 // configure strongly typed settings objects
