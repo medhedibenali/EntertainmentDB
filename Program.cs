@@ -57,7 +57,8 @@ builder.Services
     .AddScoped(typeof(ICrudService<Season>), typeof(SeasonCrudService))
     .AddScoped(typeof(ICrudService<Episode>), typeof(EpisodeCrudService))
     .AddScoped(typeof(ICrudService<Tag>), typeof(TagCrudService))
-    .AddScoped(typeof(ICrudService<Person>), typeof(PersonCrudService));
+    .AddScoped(typeof(ICrudService<Person>), typeof(PersonCrudService))
+    .AddScoped(typeof(ICrudService<Platform>), typeof(PlatformCrudService));
 
 builder.Services
     .AddScoped(typeof(IMappingService<,>), typeof(MappingService<,>))
@@ -69,7 +70,8 @@ builder.Services
     .AddScoped(typeof(IMappingService<Season, SeasonInput>), typeof(SeasonMappingService))
     .AddScoped(typeof(IMappingService<Episode, EpisodeInput>), typeof(EpisodeMappingService))
     .AddScoped(typeof(IMappingService<Tag, TagInput>), typeof(TagMappingService))
-    .AddScoped(typeof(IMappingService<Person, PersonInput>), typeof(PersonMappingService));
+    .AddScoped(typeof(IMappingService<Person, PersonInput>), typeof(PersonMappingService))
+    .AddScoped(typeof(IMappingService<Platform, PlatformInput>), typeof(PlatformMappingService));
 
 // configure strongly typed settings objects
 var jwtSection = builder.Configuration.GetSection("JWTBearerTokenSettings");
