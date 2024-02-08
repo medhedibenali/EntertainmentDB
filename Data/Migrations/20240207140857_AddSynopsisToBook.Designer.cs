@@ -3,6 +3,7 @@ using System;
 using EntertainmentDB.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EntertainmentDB.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240207140857_AddSynopsisToBook")]
+    partial class AddSynopsisToBook
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -372,7 +375,7 @@ namespace EntertainmentDB.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid>("DeveloperId")
+                    b.Property<Guid?>("DeveloperId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Name")
@@ -969,9 +972,7 @@ namespace EntertainmentDB.Data.Migrations
                 {
                     b.HasOne("EntertainmentDB.Models.Company", "Developer")
                         .WithMany("PlatformsDeveloped")
-                        .HasForeignKey("DeveloperId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DeveloperId");
 
                     b.Navigation("Developer");
                 });

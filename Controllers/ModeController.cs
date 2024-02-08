@@ -10,7 +10,7 @@ namespace EntertainmentDB.Controllers;
 [ApiController]
 [Authorize]
 [Route("[controller]")]
-public class TagController(ICrudService<Tag> tagService, IMappingService<Tag, TagInput> mappingService)
-    : CrudController<Tag, TagInput>(tagService, mappingService)
+public class ModeController(ICrudService<Mode> modeService, IMappingService<Mode, ModeInput> mappingService)
+    : CrudController<Mode, ModeInput>(modeService, mappingService)
 {
 }

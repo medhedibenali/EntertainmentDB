@@ -1,4 +1,4 @@
-using EntertainmentDB.Models;
+﻿using EntertainmentDB.Models;
 using EntertainmentDB.RequestModels;
 using EntertainmentDB.Services.Crud;
 using EntertainmentDB.Services.Mapping;
@@ -10,7 +10,6 @@ namespace EntertainmentDB.Controllers;
 [ApiController]
 [Authorize]
 [Route("[controller]")]
-public class TagController(ICrudService<Tag> tagService, IMappingService<Tag, TagInput> mappingService)
-    : CrudController<Tag, TagInput>(tagService, mappingService)
+public class EpisodeController(ICrudService<Episode> episodeService, IMappingService<Episode, EpisodeInput> mappingService) : CrudController<Episode, EpisodeInput>(episodeService, mappingService)
 {
 }

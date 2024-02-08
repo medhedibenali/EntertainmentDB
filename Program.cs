@@ -49,15 +49,24 @@ builder.Services.AddScoped(typeof(IRoleService), typeof(RoleService));
 
 builder.Services
     .AddScoped(typeof(ICrudService<>), typeof(CrudService<>))
+    .AddScoped(typeof(ICrudService<Book>), typeof(BookCrudService))
     .AddScoped(typeof(ICrudService<Game>), typeof(GameCrudService))
+    .AddScoped(typeof(ICrudService<Movie>), typeof(MovieCrudService))
+    .AddScoped(typeof(ICrudService<Track>), typeof(TrackCrudService))
+    .AddScoped(typeof(ICrudService<Show>), typeof(ShowCrudService))
+    .AddScoped(typeof(ICrudService<Season>), typeof(SeasonCrudService))
+    .AddScoped(typeof(ICrudService<Episode>), typeof(EpisodeCrudService))
     .AddScoped(typeof(ICrudService<Tag>), typeof(TagCrudService))
-    .AddScoped(typeof(ICrudService<Genre>), typeof(GenreCrudService));
+    .AddScoped(typeof(ICrudService<Person>), typeof(PersonCrudService))
+    .AddScoped(typeof(ICrudService<Franchise>), typeof(FranchiseCrudService))
+    .AddScoped(typeof(ICrudService<Mode>), typeof(ModeCrudService))
+    .AddScoped(typeof(ICrudService<Platform>), typeof(PlatformCrudService));
 
 builder.Services
     .AddScoped(typeof(IMappingService<,>), typeof(MappingService<,>))
+    .AddScoped(typeof(IMappingService<Book, BookInput>), typeof(BookMappingService))
     .AddScoped(typeof(IMappingService<Game, GameInput>), typeof(GameMappingService))
-    .AddScoped(typeof(IMappingService<Tag, TagInput>), typeof(TagMappingService))
-    .AddScoped(typeof(IMappingService<Genre, GenreInput>), typeof(GenreMappingService));  
+    .AddScoped(typeof(IMappingService<Tag, TagInput>), typeof(TagMappingService));
 
 // configure strongly typed settings objects
 var jwtSection = builder.Configuration.GetSection("JWTBearerTokenSettings");
