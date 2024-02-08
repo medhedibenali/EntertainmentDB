@@ -113,5 +113,14 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
                     .IsRequired();
             }
         );
+
+        modelBuilder.Entity<Platform>(
+            p =>
+            {
+                p.HasOne<Company>(p => p.Developer)
+                    .WithMany(c => c.PlatformsDeveloped)
+                    .IsRequired();
+            }
+        );
     }
 }
