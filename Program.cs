@@ -67,7 +67,16 @@ builder.Services
     .AddScoped(typeof(IMappingService<,>), typeof(MappingService<,>))
     .AddScoped(typeof(IMappingService<Book, BookInput>), typeof(BookMappingService))
     .AddScoped(typeof(IMappingService<Game, GameInput>), typeof(GameMappingService))
+    .AddScoped(typeof(IMappingService<Movie, MovieInput>), typeof(MovieMappingService))
+    .AddScoped(typeof(IMappingService<Track, TrackInput>), typeof(TrackMappingService))
+    .AddScoped(typeof(IMappingService<Show, ShowInput>), typeof(ShowMappingService))
+    .AddScoped(typeof(IMappingService<Season, SeasonInput>), typeof(SeasonMappingService))
+    .AddScoped(typeof(IMappingService<Episode, EpisodeInput>), typeof(EpisodeMappingService))
     .AddScoped(typeof(IMappingService<Tag, TagInput>), typeof(TagMappingService))
+    .AddScoped(typeof(IMappingService<Person, PersonInput>), typeof(PersonMappingService))
+    .AddScoped(typeof(IMappingService<Franchise, FranchiseInput>), typeof(FranchiseMappingService))
+    .AddScoped(typeof(IMappingService<Mode, ModeInput>), typeof(ModeMappingService))
+    .AddScoped(typeof(IMappingService<Platform, PlatformInput>), typeof(PlatformMappingService))
     .AddScoped(typeof(IMappingService<Genre, GenreInput>), typeof(GenreMappingService));
 
 // configure strongly typed settings objects
