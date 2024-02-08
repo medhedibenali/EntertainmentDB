@@ -10,7 +10,7 @@ namespace EntertainmentDB.Controllers;
 [ApiController]
 [Authorize]
 [Route("[controller]")]
-public class TagController(ICrudService<Tag> tagService, IMappingService<Tag, TagInput> mappingService)
-    : CrudController<Tag, TagInput>(tagService, mappingService)
+public class FranchiseController(ICrudService<Franchise> franchiseService, IMappingService<Franchise, FranchiseInput> mappingService)
+    : CrudController<Franchise, FranchiseInput>(franchiseService, mappingService)
 {
 }

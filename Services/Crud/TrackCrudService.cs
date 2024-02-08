@@ -9,7 +9,7 @@ public class TrackCrudService(IUnitOfWork unitOfWork) : CrudService<Track>(unitO
     {
         return unitOfWork.Repository<Track>()
             .Get(
-                filter: t => t.Id.Equals(id), 
+                filter: t => t.Id.Equals(id),
                 includeProperties: [
                     nameof(Track.Genres),
                     nameof(Track.Tags),
@@ -17,10 +17,10 @@ public class TrackCrudService(IUnitOfWork unitOfWork) : CrudService<Track>(unitO
                     nameof(Track.Artists),
                     nameof(Track.Movies),
                     nameof(Track.Shows),
-                    nameof(Track.Games)                    
-                ]    
+                    nameof(Track.Games)
+                ]
             )
             .FirstOrDefault();
     }
-    
+
 }

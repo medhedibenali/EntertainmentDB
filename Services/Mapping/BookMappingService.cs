@@ -10,7 +10,7 @@ public class BookMappingService(IUnitOfWork unitOfWork) : MediaMappingService<Bo
     {
         var book = new Book()
         {
-			Isbn = bookInput.Isbn,
+            Isbn = bookInput.Isbn,
             Synopsis = bookInput.Synopsis,
             Authors = bookInput.Authors == null ? null
                 : (IList<Person>)unitOfWork.Repository<Person>()
