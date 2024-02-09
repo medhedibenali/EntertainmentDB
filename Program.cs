@@ -31,7 +31,10 @@ builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(
-    options => options.UseNpgsql(connectionString)
+    options => options.UseNpgsql(
+        connectionString,
+        o => o.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery)
+    )
 );
 
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -80,6 +83,8 @@ builder.Services
     .AddScoped(typeof(IMappingService<Platform, PlatformInput>), typeof(PlatformMappingService))
     .AddScoped(typeof(IMappingService<Genre, GenreInput>), typeof(GenreMappingService))
     .AddScoped(typeof(IMappingService<Company, CompanyInput>), typeof(CompanyMappingService));
+
+builder.Services.AddScoped(typeof(IRandomService), typeof(RandomService));
 
 // configure strongly typed settings objects
 var jwtSection = builder.Configuration.GetSection("JWTBearerTokenSettings");

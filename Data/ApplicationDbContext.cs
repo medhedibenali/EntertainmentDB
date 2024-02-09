@@ -18,6 +18,8 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 
     public DbSet<Genre> Genres { get; set; }
 
+    public DbSet<Media> Media { get; set; }
+
     public DbSet<Mode> Modes { get; set; }
 
     public DbSet<Movie> Movies { get; set; }
