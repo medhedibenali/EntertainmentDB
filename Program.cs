@@ -61,6 +61,7 @@ builder.Services
     .AddScoped(typeof(ICrudService<Franchise>), typeof(FranchiseCrudService))
     .AddScoped(typeof(ICrudService<Mode>), typeof(ModeCrudService))
     .AddScoped(typeof(ICrudService<Platform>), typeof(PlatformCrudService))
+    .AddScoped(typeof(ICrudService<Genre>), typeof(GenreCrudService))
     .AddScoped(typeof(ICrudService<Company>), typeof(CompanyCrudService));
 
 builder.Services
@@ -77,6 +78,7 @@ builder.Services
     .AddScoped(typeof(IMappingService<Franchise, FranchiseInput>), typeof(FranchiseMappingService))
     .AddScoped(typeof(IMappingService<Mode, ModeInput>), typeof(ModeMappingService))
     .AddScoped(typeof(IMappingService<Platform, PlatformInput>), typeof(PlatformMappingService))
+    .AddScoped(typeof(IMappingService<Genre, GenreInput>), typeof(GenreMappingService))
     .AddScoped(typeof(IMappingService<Company, CompanyInput>), typeof(CompanyMappingService));
 
 // configure strongly typed settings objects
