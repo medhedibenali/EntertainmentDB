@@ -77,6 +77,8 @@ builder.Services
     .AddScoped(typeof(IMappingService<Mode, ModeInput>), typeof(ModeMappingService))
     .AddScoped(typeof(IMappingService<Platform, PlatformInput>), typeof(PlatformMappingService));
 
+builder.Services.AddScoped(typeof(IRandomService), typeof(RandomService));
+
 // configure strongly typed settings objects
 var jwtSection = builder.Configuration.GetSection("JWTBearerTokenSettings");
 
