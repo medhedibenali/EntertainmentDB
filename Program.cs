@@ -86,6 +86,8 @@ builder.Services
 
 builder.Services.AddScoped(typeof(IRandomService), typeof(RandomService));
 
+builder.Services.AddScoped(typeof(IProfileService), typeof(ProfileService));
+
 // configure strongly typed settings objects
 var jwtSection = builder.Configuration.GetSection("JWTBearerTokenSettings");
 
