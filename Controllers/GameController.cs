@@ -10,6 +10,7 @@ namespace EntertainmentDB.Controllers;
 [ApiController]
 [Authorize]
 [Route("[controller]")]
-public class GameController(ICrudService<Game> gameService, IMappingService<Game, GameInput> mappingService) : CrudController<Game, GameInput>(gameService, mappingService)
+public class GameController(ICrudService<Game> gameService, IMappingService<Game, GameInput> mappingService)
+    : CrudController<Game, GameInput>(gameService, mappingService)
 {
 }

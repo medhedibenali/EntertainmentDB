@@ -10,6 +10,7 @@ namespace EntertainmentDB.Controllers;
 [ApiController]
 [Authorize]
 [Route("[controller]")]
-public class EpisodeController(ICrudService<Episode> episodeService, IMappingService<Episode, EpisodeInput> mappingService) : CrudController<Episode, EpisodeInput>(episodeService, mappingService)
+public class EpisodeController(ICrudService<Episode> episodeService, IMappingService<Episode, EpisodeInput> mappingService)
+    : CrudController<Episode, EpisodeInput>(episodeService, mappingService)
 {
 }

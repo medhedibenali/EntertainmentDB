@@ -4,7 +4,8 @@ using EntertainmentDB.RequestModels;
 
 namespace EntertainmentDB.Services.Mapping;
 
-public class BookMappingService(IUnitOfWork unitOfWork) : MediaMappingService<Book, BookInput>(unitOfWork)
+public class BookMappingService(IUnitOfWork unitOfWork)
+    : MediaMappingService<Book, BookInput>(unitOfWork)
 {
     public override Book Map(BookInput bookInput)
     {

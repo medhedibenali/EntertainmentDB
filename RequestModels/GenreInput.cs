@@ -1,9 +1,6 @@
-using EntertainmentDB.Models;
+namespace EntertainmentDB.RequestModels;
 
-namespace EntertainmentDB.RequestModels
+public class GenreInput
 {
-	public class GenreInput
-	{
-		public string Name { get; set; } = "";
-	}
+    public string Name { get; set; } = "";
 }

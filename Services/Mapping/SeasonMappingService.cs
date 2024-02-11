@@ -4,7 +4,8 @@ using EntertainmentDB.RequestModels;
 
 namespace EntertainmentDB.Services.Mapping;
 
-public class SeasonMappingService(IUnitOfWork unitOfWork) : IMappingService<Season, SeasonInput>
+public class SeasonMappingService(IUnitOfWork unitOfWork)
+    : IMappingService<Season, SeasonInput>
 {
     private readonly IUnitOfWork unitOfWork = unitOfWork;
     public Season Map(SeasonInput seasonInput)

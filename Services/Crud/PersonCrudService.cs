@@ -2,6 +2,7 @@
 using EntertainmentDB.Models;
 
 namespace EntertainmentDB.Services.Crud;
+
 public class PersonCrudService(IUnitOfWork unitOfWork) : CrudService<Person>(unitOfWork)
 {
     public override Person? GetById(object id)

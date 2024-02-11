@@ -4,7 +4,8 @@ using EntertainmentDB.RequestModels;
 
 namespace EntertainmentDB.Services.Mapping;
 
-public class FranchiseMappingService(IUnitOfWork unitOfWork) : IMappingService<Franchise, FranchiseInput>
+public class FranchiseMappingService(IUnitOfWork unitOfWork)
+    : IMappingService<Franchise, FranchiseInput>
 {
     private readonly IUnitOfWork unitOfWork = unitOfWork;
 

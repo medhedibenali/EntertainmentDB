@@ -2,6 +2,7 @@
 using EntertainmentDB.RequestModels;
 
 namespace EntertainmentDB.Services.Mapping;
+
 public class PersonMappingService : IMappingService<Person, PersonInput>
 {
     public Person Map(PersonInput personInput)
