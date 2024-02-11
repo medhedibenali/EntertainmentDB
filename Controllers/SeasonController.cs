@@ -10,6 +10,7 @@ namespace EntertainmentDB.Controllers;
 [ApiController]
 [Authorize]
 [Route("[controller]")]
-public class SeasonController(ICrudService<Season> seasonService, IMappingService<Season, SeasonInput> mappingService) : CrudController<Season, SeasonInput>(seasonService, mappingService)
+public class SeasonController(ICrudService<Season> seasonService, IMappingService<Season, SeasonInput> mappingService)
+    : CrudController<Season, SeasonInput>(seasonService, mappingService)
 {
 }

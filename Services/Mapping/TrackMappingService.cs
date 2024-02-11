@@ -4,7 +4,8 @@ using EntertainmentDB.RequestModels;
 
 namespace EntertainmentDB.Services.Mapping;
 
-public class TrackMappingService(IUnitOfWork unitOfWork) : MediaMappingService<Track, TrackInput>(unitOfWork)
+public class TrackMappingService(IUnitOfWork unitOfWork)
+    : MediaMappingService<Track, TrackInput>(unitOfWork)
 {
     public override Track Map(TrackInput trackInput)
     {

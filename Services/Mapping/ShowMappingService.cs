@@ -4,7 +4,8 @@ using EntertainmentDB.RequestModels;
 
 namespace EntertainmentDB.Services.Mapping;
 
-public class ShowMappingService(IUnitOfWork unitOfWork) : MediaMappingService<Show, ShowInput>(unitOfWork)
+public class ShowMappingService(IUnitOfWork unitOfWork)
+    : MediaMappingService<Show, ShowInput>(unitOfWork)
 {
     public override Show Map(ShowInput showInput)
     {

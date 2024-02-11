@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace EntertainmentDB.Data;
 
-public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser, ApplicationRole, string>(options)
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+    : IdentityDbContext<ApplicationUser, ApplicationRole, string>(options)
 {
     public DbSet<Book> Books { get; set; }
 

@@ -1,16 +1,13 @@
-﻿using EntertainmentDB.Models;
+﻿namespace EntertainmentDB.RequestModels;
 
-namespace EntertainmentDB.RequestModels
+public class PersonInput
 {
-    public class PersonInput
-    {
-        public string FirstName { get; set; } = "";
+    public string FirstName { get; set; } = "";
 
-        public string LastName { get; set; } = "";
+    public string LastName { get; set; } = "";
 
-        public DateOnly Birthday { get; set; }
+    public DateOnly Birthday { get; set; }
 
-        public string Origin { get; set; } = "";
+    public string Origin { get; set; } = "";
 
-    }
 }

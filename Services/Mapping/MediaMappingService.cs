@@ -4,9 +4,10 @@ using EntertainmentDB.RequestModels;
 
 namespace EntertainmentDB.Services.Mapping;
 
-public abstract class MediaMappingService<TEntity, TEntityInput>(IUnitOfWork unitOfWork) : IMappingService<TEntity, TEntityInput>
-    where TEntity : Media
-    where TEntityInput : MediaInput
+public abstract class MediaMappingService<TEntity, TEntityInput>(IUnitOfWork unitOfWork)
+    : IMappingService<TEntity, TEntityInput>
+      where TEntity : Media
+      where TEntityInput : MediaInput
 {
     protected readonly IUnitOfWork unitOfWork = unitOfWork;
 

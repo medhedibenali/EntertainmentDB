@@ -2,7 +2,8 @@ using EntertainmentDB.DAL;
 
 namespace EntertainmentDB.Services.Crud;
 
-public class CrudService<TEntity>(IUnitOfWork unitOfWork) : ICrudService<TEntity> where TEntity : class
+public class CrudService<TEntity>(IUnitOfWork unitOfWork) : ICrudService<TEntity>
+    where TEntity : class
 {
     protected readonly IUnitOfWork unitOfWork = unitOfWork;
 

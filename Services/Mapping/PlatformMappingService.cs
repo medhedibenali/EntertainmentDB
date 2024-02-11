@@ -4,7 +4,8 @@ using EntertainmentDB.RequestModels;
 
 namespace EntertainmentDB.Services.Mapping;
 
-public class PlatformMappingService(IUnitOfWork unitOfWork) : IMappingService<Platform, PlatformInput>
+public class PlatformMappingService(IUnitOfWork unitOfWork)
+    : IMappingService<Platform, PlatformInput>
 {
     private readonly IUnitOfWork unitOfWork = unitOfWork;
 

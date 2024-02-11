@@ -1,6 +1,4 @@
-﻿using EntertainmentDB.Models;
-
-namespace EntertainmentDB.RequestModels;
+﻿namespace EntertainmentDB.RequestModels;
 
 public class ShowInput : MediaInput
 {
