@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using EntertainmentDB.Services;
 using EntertainmentDB.RequestModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EntertainmentDB.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("[controller]")]
 public class RoleController(IRoleService roleService) : ControllerBase
 {
