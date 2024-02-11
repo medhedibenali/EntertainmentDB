@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Identity;
 using EntertainmentDB.Models;
-using EntertainmentDB.RequestModels;
 
 namespace EntertainmentDB.Services;
 
@@ -13,11 +12,10 @@ public class UserService(UserManager<ApplicationUser> userManager) : IUserServic
         return userManager.Users;
     }
 
-    public async Task AssignRole(string username, RoleInput roleInput)
+    public async Task AssignRole(string username, string roleName)
     {
-        var role = roleInput.Name;
         var user = await userManager.FindByNameAsync(username) ?? throw new Exception("Username not found");
-        var result = await userManager.AddToRoleAsync(user, role);
+        var result = await userManager.AddToRoleAsync(user, roleName);
 
         if (!result.Succeeded)
         {

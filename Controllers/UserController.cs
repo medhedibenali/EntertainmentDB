@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using EntertainmentDB.Services;
-using EntertainmentDB.RequestModels;
 
 namespace EntertainmentDB.Controllers;
 
@@ -19,12 +18,12 @@ public class UserController(IUserService userService) : ControllerBase
         return Ok(users);
     }
 
-    [HttpPost("assign-role/{username}")]
-    public async Task<IActionResult> AssignRole(string username, RoleInput roleInput)
+    [HttpPost("{username}/Role/{roleName}")]
+    public async Task<IActionResult> AssignRole(string username, string roleName)
     {
         try
         {
-            await userService.AssignRole(username, roleInput);
+            await userService.AssignRole(username, roleName);
         }
         catch (Exception e)
         {
