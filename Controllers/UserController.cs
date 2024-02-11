@@ -6,6 +6,7 @@ using EntertainmentDB.RequestModels;
 namespace EntertainmentDB.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("[controller]")]
 public class UserController(IUserService userService) : ControllerBase
 {
@@ -19,7 +20,6 @@ public class UserController(IUserService userService) : ControllerBase
     }
 
     [HttpPost("assign-role/{username}")]
-    [Authorize]
     public async Task<IActionResult> AssignRole(string username, RoleInput roleInput)
     {
         try
