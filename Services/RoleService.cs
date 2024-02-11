@@ -23,7 +23,7 @@ public class RoleService(RoleManager<ApplicationRole> roleManager) : IRoleServic
             return;
         }
 
-        ApplicationRole role = new()
+        var role = new ApplicationRole()
         {
             Name = name
         };
